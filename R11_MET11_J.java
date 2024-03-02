@@ -2,19 +2,15 @@
 class Employee {
   private String name;
   private double salary;
+  private final long employeeID;  // Unique for each Employee
  
-  Employee(String empName, double empSalary) {
-    this.name = empName;
-    this.salary = empSalary;
+  Employee(String name, double salary, long empID) {
+    this.name = name;
+    this.salary = salary;
+    this.employeeID = empID;
   }
  
-  public void setEmployeeName(String empName) {
-    this.name = empName;
-  }
- 
-  public void setSalary(double empSalary) {
-    this.salary = empSalary;
-  }
+  // ...
  
   @Override
   public boolean equals(Object o) {
@@ -23,14 +19,11 @@ class Employee {
     }
  
     Employee emp = (Employee)o;
-    return emp.name.equals(name);
+    return emp.employeeID == employeeID;
   }
- 
-  public int hashCode() {/* ... */}
- 
 }
  
-// Client code
+// Client code remains same
 Map<Employee, Calendar> map =
   new ConcurrentHashMap<Employee, Calendar>();
 // ...
